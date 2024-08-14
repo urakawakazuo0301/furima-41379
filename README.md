@@ -12,7 +12,7 @@
 | first_name         | string | null: false |
 | last_name_kana     | string | null: false |
 | first_name_kana    | string | null: false |
-| birthday           | data   | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -24,7 +24,6 @@
 
 | Column            | Type       | Options     |
 | ----------        | ---------- | ----------- |
-| image             | string     | null: false |
 | name              | string     | null: false |
 | description       | text       | null: false |
 | category_id       | integer    | null: false |
