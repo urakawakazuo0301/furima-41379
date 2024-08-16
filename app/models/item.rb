@@ -3,11 +3,11 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  
+
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :category_id, presence: true
+  validates :category_id, numericality: { other_than: 1 }
   validates :item_condition_id, presence: true
   validates :shipping_cost_id, presence: true
   validates :prefecture_id, presence: true
