@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
   end
 
@@ -11,7 +13,7 @@ class ItemsController < ApplicationController
       if @item.save
         redirect_to '/'
       else
-        render 'new'
+        render 'new', status: :unprocessable_entity
       end
   end
 
