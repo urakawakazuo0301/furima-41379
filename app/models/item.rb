@@ -7,7 +7,7 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :category_id, numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1 , message: "Category can't be blank"}
   validates :item_condition_id, presence: true
   validates :shipping_cost_id, presence: true
   validates :prefecture_id, presence: true
