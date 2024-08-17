@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
-      end 
+      end
       it 'nameが空では出品できない' do
         @item.name = ''
         @item.valid?
@@ -60,27 +60,27 @@ RSpec.describe Item, type: :model do
       it 'priceに小数点が含まれると出品できない' do
         @item.price = '1111.111'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be an integer")
+        expect(@item.errors.full_messages).to include('Price must be an integer')
       end
       it 'priceが全角だと出品できない' do
         @item.price = '１１１１１１'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceが300円以下だと出品できない' do
         @item.price = '300'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than 300')
       end
       it 'priceが9,999,999円以上だと出品できない' do
         @item.price = '9999999'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than 9999999')
       end
       it 'userが紐付いてないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
