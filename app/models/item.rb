@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to :shipping_date
 
   has_one_attached :image
+  belongs_to :user
+  has_one :order 
 
   validates :image, presence: true
   validates :name, presence: true
@@ -19,7 +21,7 @@ class Item < ApplicationRecord
   validates :shipping_date_id, numericality: { other_than: 1 , message: "can't be blank"}
   
   with_options format: { with: /\A[0-9]+\z/, message: "can't be blank"} do
-    validates :price, numericality: { greater_than: 300, less_than: 9999999 }
+    validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
   end
 
 end
