@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
     @items = Item.all.includes(:user).order(created_at: :desc)
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+  
   def new
     @item = Item.new
   end
@@ -16,10 +20,6 @@ class ItemsController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
-
-  def show
-    @item = Item.find(params[:id])
-  end
 
   end
 
