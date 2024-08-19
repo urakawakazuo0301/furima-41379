@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
-  
+
   def new
     @item = Item.new
   end
@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
-
   end
 
   private
