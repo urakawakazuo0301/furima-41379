@@ -1,28 +1,25 @@
 class OrdersController < ApplicationController
-  before_action :set_item, only: [:index, :create]
+  
 
   def index
-    @buyer_order = BuyerOrder.new
+    @item = Item.find(params[:item_id])
+    @orderform = OrderForm.new
   end
 
   def create
-    @buyer_order = BuyerOrder.new(order_params)
-    if @buyer_order.valid?
-      @buyer_order.save
-      redirect_to '/'
+    @orderform = OrderForm.new(order_params)
+    if @orderform.valid?
+      @orderform.save
+      redirect_to root_path
     else
-      render "/", status: unprocessable_entity
+      @item = Item.find(params[:item_id])
+      render :index, status: :unprocessable_entity
     end
   end
 
   private
 
-  def set_item
-    @item = Item.find(params[:item_id])
-  end
-
   def order_params
-    params.require(:buyer_order).permit(:postcode, :prefecrute_id, :city, :block, :building, :phone_number).merge(user_id: current_user.id, item_id: item_id)
+    params.require(:order_form).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number).merge(item_id: params[:item_id], user_id: current_user.id)
   end
-
 end
