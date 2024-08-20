@@ -1,6 +1,6 @@
 class BuyerOrder
 
-  include ActiveModel::MOdel
+  include ActiveModel::Model
   attr_accessor :postcode, :prefecrute, :city, :bolck, :building, :phone_number, :user_id, :item_id
 
   with_options presence: true do
@@ -15,6 +15,6 @@ class BuyerOrder
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Buyer.create(postcode: postcode, prefecrute: prefecrute, city: city, block: block, building: building, phone_number: phone_number, order_id: order.id)
+    Buyer.create(postcode: postcode, prefecrute_id: prefecrute_id, city: city, block: block, building: building, phone_number: phone_number, order_id: order.id)
   end
 end
