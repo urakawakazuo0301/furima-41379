@@ -10,6 +10,7 @@ class OrderForm
     validates :phone_number, format: {with: /\A\d{11}\z/, message:"is invalid. Input only number"}
     validates :user_id
     validates :item_id
+    validates :token
   end
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
 
