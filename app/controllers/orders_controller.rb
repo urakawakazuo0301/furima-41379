@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :set_soldout
+  before_action :set_item_user
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -36,4 +39,17 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order_form).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number).merge(item_id: params[:item_id], user_id: current_user.id, token: params[:token])
   end
+
+  def set_soldout
+    if @item.order.present?
+      redirect_to '/'
+    end
+  end
+
+  def set_item_user
+    if current_user.id == @item.user.id
+      redirect_to '/'
+    end
+  end
+
 end
