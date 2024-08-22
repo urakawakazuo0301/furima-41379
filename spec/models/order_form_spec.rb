@@ -31,12 +31,12 @@ RSpec.describe OrderForm, type: :model do
         @order_form.postcode = ''
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Postcode can't be blank",
- "Postcode is invalid. Enter it as follows (e.g. 123-4567)")
+                                                            'Postcode is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'postcodeにハイフンがないと購入できない' do
         @order_form.postcode = '1234567'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Postcode is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_form.errors.full_messages).to include('Postcode is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'prefecture_idが[1]では購入できない' do
         @order_form.prefecture_id = 1
@@ -61,12 +61,12 @@ RSpec.describe OrderForm, type: :model do
       it 'phone_numberにハイフンがあると購入できない' do
         @order_form.phone_number = '012-3456-7890'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_form.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'phone_numberが12桁以上あると購入できない' do
         @order_form.phone_number = '012345678900'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_form.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'tokenが空では購入できない' do
         @order_form.token = nil
