@@ -80,6 +80,11 @@
   padding: 2vh 0;
 }
 
+.preview-size {
+  height: 150px;
+  width: 150px;
+}
+
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
