@@ -85,6 +85,12 @@
   width: 150px;
 }
 
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+}
+
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
