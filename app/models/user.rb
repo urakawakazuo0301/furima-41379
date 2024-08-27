@@ -9,12 +9,12 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'is invalid. Input full-width characters' } do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ } do
     validates :last_name
     validates :first_name
   end
 
-  with_options presence: true, format: { with: /\A[ァ-ヴー]+\z/u, message: 'is invalid. Input full-width katakana characters' } do
+  with_options presence: true, format: { with: /\A[ァ-ヴー]+\z/u } do
     validates :last_name_kana
     validates :first_name_kana
   end
@@ -22,5 +22,5 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-  validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers' }
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 end
