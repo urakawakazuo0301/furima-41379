@@ -183,6 +183,7 @@ img {
   font-size: 14px;
   margin: 10px 0px;
   text-align: left;
+  display: inline-block;
 }
 
 .comment-btn {
@@ -203,7 +204,15 @@ img {
 }
 
 .comment-flag-icon {
-  margin: 10px 5px 0 0;
+  height: 50%;
+  width: 50%;
+  margin-left: 40px;
+  margin-right: 10px;
+}
+
+.comment-btn span {
+  display: inline-block;
+  font-size: 20px;
 }
 
 .links {
